@@ -1,8 +1,8 @@
 let currentPokemon;
 
 async function loadPokemon() {
-    //let url = `https://pokeapi.co/api/v2/pokemon/charmander`;
-    let url = `https://pokeapi.co/api/v2/pokemon/bulbasaur`;
+    let url = `https://pokeapi.co/api/v2/pokemon/charmander`;
+    //let url = `https://pokeapi.co/api/v2/pokemon/bulbasaur`;
     let response = await fetch(url);
     currentPokemon = await response.json();
     console.log(currentPokemon);
@@ -13,6 +13,7 @@ async function loadPokemon() {
 function renderPokemonInfo() {
     document.getElementById('pokemonName').innerHTML = currentPokemon['name'];
     document.getElementById('pokemonImg').src = currentPokemon['sprites']['other']['home']['front_default'];
+    document.getElementById('pokemonId').innerHTML = '#' + String(currentPokemon['id']).padStart(3, '0');
     renderPokemonTypes();
 }
 

@@ -5,6 +5,7 @@ body {
 
 h1 {
     text-transform: capitalize;
+    margin-bottom: 0;
 }
 
 #pokedex {
@@ -16,24 +17,27 @@ h1 {
 }
 
 #pokemonImg {
-    height: 200px;
-    width: 200px;
+    height: 300px;
     object-fit: cover;
-    margin-top: -180px;
+    margin-top: -270px;
 }
 
 .info-container {
     background-color: white;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
-    min-height: 100px;
-    margin-top: -40px;
+    min-height: 50vh;
+    margin-top: -10vh;
     display: flex;
     justify-content: center;
 }
 
 .bg-fire {
-    background-color: rgb(252, 77, 77);
+    background-color: rgb(252, 108, 109);
+}
+
+.bg-grass {
+    background-color: rgb(73, 208, 176);
 }
 
 #pokemonTypes {
@@ -51,4 +55,17 @@ h1 {
     justify-content: center;
     align-items: center;
     text-transform: capitalize;
+}
+
+#pokemonId {
+    font-size: small;
+    font-weight: bold;
+    display: flex;
+    justify-content: right;
+}
+
+@media(min-width: 768px) {
+    #singleView {
+        border-radius: 16px;
+    }
 }
