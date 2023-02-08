@@ -1,0 +1,11 @@
+# Verbieten aller rechtlichen Seiten
+User-agent: *
+
+# Verbieten für Ordner bzw. spezifische Seiten
+Disallow: /index.html
+Disallow: /img/
+Disallow: /downloads/
+Disallow: /style.css
+Disallow: /fonts.css
+Disallow: /_archive/
+Disallow: /script.js

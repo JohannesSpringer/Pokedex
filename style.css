@@ -1,5 +1,49 @@
+body {
+    margin: 0;
+    font-family: roboto;
+}
+
+h1 {
+    text-transform: capitalize;
+}
+
 #pokedex {
     min-height: 50vh;
-    background-color: rgb(182, 26, 26);
     color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+}
+
+#pokemonImg {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    margin-top: -170px;
+}
+
+.info-container {
+    background-color: white;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    min-height: 100px;
+    margin-top: -40px;
+    display: flex;
+    justify-content: center;
+}
+
+.bg-fire {
+    background-color: rgb(252, 77, 77);
+}
+
+.pokemon-type {
+    height: 16px;
+    width: 60px;
+    padding: 2px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
 }
