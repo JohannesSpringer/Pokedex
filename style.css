@@ -19,7 +19,7 @@ h1 {
     height: 200px;
     width: 200px;
     object-fit: cover;
-    margin-top: -170px;
+    margin-top: -180px;
 }
 
 .info-container {
@@ -36,9 +36,14 @@ h1 {
     background-color: rgb(252, 77, 77);
 }
 
+#pokemonTypes {
+    display: flex;
+    gap: 8px;
+}
+
 .pokemon-type {
     height: 16px;
-    width: 60px;
+    width: 80px;
     padding: 2px;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.25);
