@@ -8,6 +8,10 @@ h1 {
     margin-bottom: 0;
 }
 
+.d-none {
+    display: none;
+}
+
 #pokedex {
     min-height: 50vh;
     color: white;
@@ -18,6 +22,7 @@ h1 {
 
 #pokemonImg {
     height: 300px;
+    width: 300px;
     object-fit: cover;
     margin-top: -270px;
 }
@@ -26,10 +31,11 @@ h1 {
     background-color: white;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
-    min-height: 50vh;
     margin-top: -10vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .bg-fire {
@@ -62,6 +68,34 @@ h1 {
     font-weight: bold;
     display: flex;
     justify-content: right;
+}
+
+.pokemon-table {
+    display: flex;
+    min-width: 250px;
+    font-size: small;
+    text-transform: capitalize;
+    margin: 16px;
+}
+
+table td:nth-child(1) {
+    width: auto;
+}
+
+table td:nth-child(2) {
+    font-weight: bold;
+    padding-left: 12px;
+    padding-right: 8px;
+}
+
+table tr {
+    padding-top: 4px;
+    padding-bottom: 40px;
+    height: 32px;
+}
+
+table td:nth-child(3) {
+    width: calc(100vw - 16px - 20px);
 }
 
 @media(min-width: 768px) {
