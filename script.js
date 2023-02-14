@@ -16,6 +16,7 @@ function renderPokemonInfo() {
     document.getElementById('pokemonId').innerHTML = '#' + String(currentPokemon['id']).padStart(3, '0');
     renderPokemonTypes();
     renderPokemonStats();
+    getColors();
 }
 
 function renderPokemonTypes() {
@@ -34,16 +35,28 @@ function renderPokemonStats() {
     document.getElementById('pokemonInfoTable').innerHTML = '';
     for (let i = 0; i < stats.length; i++) {
         const stat = stats[i];
-        document.getElementById('pokemonInfoTable').innerHTML += `
-        <tr>
-            <td>${stat['stat']['name']}</td>
-            <td>${stat['base_stat']}</td>
-            <td>
-            <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25"
-                aria-valuemin="0" aria-valuemax="100">
-                <div class="progress-bar bg-success" style="width: 25%">100</div>
-            </div>
-            </td>
-        </tr>`;
+        document.getElementById('pokemonInfoTable').innerHTML += htmlPokemonInfoTableRow(stat);
     }
+}
+
+function htmlPokemonInfoTableRow(stat) {
+    return `<tr>
+                <td>${stat['stat']['name']}</td>
+                <td>${stat['base_stat']}</td>
+                <td>
+                    <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25"
+                        aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar bg-success" style="width: 25%">100</div>
+                    </div>
+                </td>
+            </tr>`;
+}
+
+async function getColors() {
+    let url = 'https://pokeapi.co/api/v2/pokemon-color/1'; //ID 1-10 vorhanden!
+    let response = await fetch(url);
+    let color = await response.json();
+    let bgColor = color['name'];
+    document.getElementById('singleView').classList.add('bg-' + bgColor);
+    console.log(color['name']);
 }

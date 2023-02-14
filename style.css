@@ -38,12 +38,44 @@ h1 {
     align-items: center;
 }
 
-.bg-fire {
-    background-color: rgb(252, 108, 109);
+.bg-black {
+    background-color: rgb(44, 44, 44);
+}
+
+.bg-blue {
+    background-color: rgb(44, 41, 255);
+}
+
+.bg-brown {
+    background-color: rgb(105, 52, 8);
+}
+
+.bg-gray {
+    background-color: rgb(122, 122, 122);
 }
 
 .bg-grass {
     background-color: rgb(73, 208, 176);
+}
+
+.bg-pink {
+    background-color: rgb(255, 104, 255);
+}
+
+.bg-purple {
+    background-color: rgb(102, 44, 102);
+}
+
+.bg-red {
+    background-color: rgb(252, 108, 109);
+}
+
+.bg-white {
+    background-color: rgb(255, 255, 255);
+}
+
+.bg-yellow {
+    background-color: rgb(253, 232, 44);
 }
 
 #pokemonTypes {
@@ -91,11 +123,16 @@ table td:nth-child(2) {
 table tr {
     padding-top: 4px;
     padding-bottom: 40px;
-    height: 32px;
+    height: 46px;
 }
 
 table td:nth-child(3) {
     width: calc(100vw - 16px - 20px);
+    max-width: 300px;
+}
+
+#singleView {
+    max-width: 600px;
 }
 
 @media(min-width: 768px) {
