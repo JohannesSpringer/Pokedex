@@ -1,8 +1,8 @@
 let currentPokemon;
 
 async function loadPokemon() {
-    //let url = `https://pokeapi.co/api/v2/pokemon/charmander`;
-    let url = `https://pokeapi.co/api/v2/pokemon/bulbasaur`;
+    let url = `https://pokeapi.co/api/v2/pokemon/charmander`;
+    //let url = `https://pokeapi.co/api/v2/pokemon/bulbasaur`;
     let response = await fetch(url);
     currentPokemon = await response.json();
     console.log(currentPokemon);
@@ -16,7 +16,7 @@ function renderPokemonInfo() {
     document.getElementById('pokemonId').innerHTML = '#' + String(currentPokemon['id']).padStart(3, '0');
     renderPokemonTypes();
     renderPokemonStats();
-    getColors();
+    getColor();
 }
 
 function renderPokemonTypes() {
@@ -52,11 +52,10 @@ function htmlPokemonInfoTableRow(stat) {
             </tr>`;
 }
 
-async function getColors() {
-    let url = 'https://pokeapi.co/api/v2/pokemon-color/1'; //ID 1-10 vorhanden!
+async function getColor() {
+    let url = currentPokemon['species']['url'];
     let response = await fetch(url);
     let color = await response.json();
-    let bgColor = color['name'];
+    let bgColor = color['color']['name'];
     document.getElementById('singleView').classList.add('bg-' + bgColor);
-    console.log(color['name']);
 }
