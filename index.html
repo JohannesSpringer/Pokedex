@@ -14,28 +14,24 @@
     <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </head>
 
-<body onload="loadPokemon()">
-    <div id="singleView" class="">
-        <div id="pokedex">
-            <h1 id="pokemonName">Name</h1>
-            <div id="pokemonId">#001</div>
-            <div id="pokemonTypes">Type</div>
-        </div>
-        <div class="info-container">
-            <img src="" id="pokemonImg">
-            <div class="pokemon-table">
-                <table id="pokemonInfoTable">
-                    <tr>
-                        <td>Strength</td>
-                        <td>54</td>
-                        <td>
-                            <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25"
-                                aria-valuemin="0" aria-valuemax="100">
-                                <div class="progress-bar bg-success" style="width: 25%"></div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
+<body onload="renderPokemon()">
+    <div id="overview">
+
+    </div>
+
+    <div class="bg-gray d-none">
+        <div id="singleView">
+            <div id="pokedex">
+                <h1 id="pokemonName"></h1>
+                <div id="pokemonId"></div>
+                <div id="pokemonTypes"></div>
+            </div>
+            <div class="info-container">
+                <img src="" id="pokemonImg">
+                <div class="pokemon-table">
+                    <table id="pokemonInfoTable">
+                    </table>
+                </div>
             </div>
         </div>
     </div>

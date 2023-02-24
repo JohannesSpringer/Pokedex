@@ -8,15 +8,44 @@ let maxStats = {
     'speed': 180
 };
 
-async function loadPokemon() {
-    //let url = `https://pokeapi.co/api/v2/pokemon/charmander`;
-    let url = `https://pokeapi.co/api/v2/pokemon/mewtwo`;
-    //let url = `https://pokeapi.co/api/v2/pokemon/bulbasaur`;
+async function showPokemonDetails(id) {
+    let url = `https://pokeapi.co/api/v2/pokemon/` + id.toString();
     let response = await fetch(url);
     currentPokemon = await response.json();
-    console.log(currentPokemon);
-
     renderPokemonInfo();
+}
+
+async function renderPokemon() {
+    document.getElementById('overview').innerHTML = '';
+    for (let i = 1; i < 151; i++) {
+        let url = 'https://pokeapi.co/api/v2/pokemon/' + i.toString();
+        let response = await loadPokemon(url);
+        let newPokemon = await response.json();
+        document.getElementById('overview').innerHTML += await renderSinglePokemon(newPokemon);
+    }
+}
+
+async function loadPokemon(url) {
+    return await fetch(url);
+}
+
+async function renderSinglePokemon(pokemon) {
+    return `<div class="pokemon-card ${await getBgColor(pokemon)}" onclick="showPokemonDetails(${pokemon['id']})">
+                <h3>${pokemon['name']}</h3>
+                <div class="pokemonId">#${String(pokemon['id']).padStart(3, '0')}</div>
+                <div class="pokemon-types-overview">${getTypes(pokemon)}</div>
+                <img src="${pokemon['sprites']['other']['home']['front_default']}" class="pokemon-img">
+            </div>`;
+}
+
+function getTypes(pokemon) {
+    let types = pokemon['types'];
+    let htmlTypes = '';
+    for (let i = 0; i < types.length; i++) {
+        const type = types[i]['type']['name'];
+        htmlTypes += `<span class="pokemon-type-overview">${type}</span>`;
+    };
+    return htmlTypes;
 }
 
 function renderPokemonInfo() {
@@ -26,6 +55,7 @@ function renderPokemonInfo() {
     renderPokemonTypes();
     renderPokemonStats();
     getColor();
+    document.getElementById('singleView').classList.remove('d-none');
 }
 
 function renderPokemonTypes() {
@@ -76,4 +106,12 @@ async function getColor() {
     let color = await response.json();
     let bgColor = color['color']['name'];
     document.getElementById('singleView').classList.add('bg-' + bgColor);
+}
+
+async function getBgColor(pokemon) {
+    let url = pokemon['species']['url'];
+    let response = await fetch(url);
+    let color = await response.json();
+    let bgColor = color['color']['name'];
+    return ('bg-' + bgColor);
 }

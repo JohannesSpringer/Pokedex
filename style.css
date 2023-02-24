@@ -8,6 +8,12 @@ h1 {
     margin-bottom: 0;
 }
 
+h3 {
+    font-size: medium;
+    text-transform: capitalize;
+    margin-bottom: 0;
+}
+
 .d-none {
     display: none;
 }
@@ -20,6 +26,29 @@ h1 {
     padding: 24px;
 }
 
+#overview {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    padding: 12px;
+}
+
+.pokemon-card {
+    height: 120px;
+    width: calc(40vw);
+    max-width: 180px;
+    min-width: 140px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    border-radius: 12px;
+    background-color: aqua;
+    position: relative;
+    cursor: pointer;
+}
+
 #pokemonImg {
     height: 300px;
     width: 300px;
@@ -27,11 +56,21 @@ h1 {
     margin-top: -270px;
 }
 
+.pokemon-img {
+    height: 70px;
+    width: 70px;
+    object-fit: cover;
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+}
+
 .info-container {
     background-color: white;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
     margin-top: -10vh;
+    height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -71,16 +110,42 @@ h1 {
 }
 
 .bg-white {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(199, 199, 199) !important;
 }
 
 .bg-yellow {
     background-color: rgb(253, 232, 44);
 }
 
+.bg-gray {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 #pokemonTypes {
     display: flex;
     gap: 8px;
+}
+
+.pokemon-types-overview {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 6px;
+    font-size: small;
+}
+
+.pokemon-type-overview {
+    height: 16px;
+    width: max-content;
+    padding: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.25);
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    text-transform: capitalize;
 }
 
 .pokemon-type {
@@ -100,6 +165,14 @@ h1 {
     font-weight: bold;
     display: flex;
     justify-content: right;
+}
+
+.pokemonId {
+    font-size: small;
+    font-weight: bold;
+    display: flex;
+    position: absolute;
+    right: 6px;
 }
 
 .pokemon-table {
@@ -131,11 +204,15 @@ table td:nth-child(3) {
 }
 
 #singleView {
-    max-width: 600px;
+    height: 100vh;
+    position: absolute;
+    top: 0;
 }
 
 @media(min-width: 768px) {
     #singleView {
         border-radius: 16px;
+        max-width: 600px;
+        left: calc(50vw - 300px);
     }
 }
