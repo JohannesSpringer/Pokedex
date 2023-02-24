@@ -1,7 +1,16 @@
 let currentPokemon;
+let maxStats = {
+    'hp': 255,
+    'attack': 190,
+    'defense': 230,
+    'special-attack': 194,
+    'special-defense': 230,
+    'speed': 180
+};
 
 async function loadPokemon() {
-    let url = `https://pokeapi.co/api/v2/pokemon/charmander`;
+    //let url = `https://pokeapi.co/api/v2/pokemon/charmander`;
+    let url = `https://pokeapi.co/api/v2/pokemon/mewtwo`;
     //let url = `https://pokeapi.co/api/v2/pokemon/bulbasaur`;
     let response = await fetch(url);
     currentPokemon = await response.json();
@@ -40,16 +49,25 @@ function renderPokemonStats() {
 }
 
 function htmlPokemonInfoTableRow(stat) {
+    let calculatedPartOfStat = stat['base_stat'] / maxStats[stat['stat']['name']] * 100;
+    let bgProgressbar;
+    if (statSmallerThanMedium(stat, maxStats[stat['stat']['name']])) {
+        bgProgressbar = 'bg-danger';
+    } else bgProgressbar = 'bg-success';
     return `<tr>
                 <td>${stat['stat']['name']}</td>
                 <td>${stat['base_stat']}</td>
                 <td>
                     <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25"
                         aria-valuemin="0" aria-valuemax="100">
-                        <div class="progress-bar bg-success" style="width: 25%">100</div>
+                        <div class="progress-bar ${bgProgressbar}" style="width: ${calculatedPartOfStat}%"></div>
                     </div>
                 </td>
             </tr>`;
+}
+
+function statSmallerThanMedium(stat, calculatedPartOfStat) {
+    return stat['base_stat'] < (calculatedPartOfStat / 2);
 }
 
 async function getColor() {
