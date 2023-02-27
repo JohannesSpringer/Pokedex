@@ -226,6 +226,10 @@ table td:nth-child(3) {
     top: 0;
 }
 
+.overflow-hidden {
+    overflow: hidden;
+}
+
 .back-arrow {
     font-size: larger;
     cursor: pointer;

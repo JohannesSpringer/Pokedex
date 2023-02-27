@@ -17,7 +17,7 @@ async function showPokemonDetails(id) {
 
 async function renderPokemon() {
     document.getElementById('overview').innerHTML = '';
-    for (let i = 1; i < 5; i++) {
+    for (let i = 1; i < 151; i++) {
         let url = 'https://pokeapi.co/api/v2/pokemon/' + i.toString();
         let response = await fetch(url);
         let newPokemon = await response.json();
@@ -52,6 +52,7 @@ function renderPokemonInfo() {
     renderPokemonStats();
     getColor();
     document.getElementById('windowSingleView').classList.remove('d-none');
+    document.getElementById('body').classList.add('overflow-hidden');
 }
 
 function renderPokemonTypes() {
@@ -114,6 +115,8 @@ async function getBgColor(pokemon) {
 
 function closeSingleView() {
     document.getElementById('windowSingleView').classList.add('d-none');
+    document.getElementById('body').classList.remove('overflow-hidden');
+    document.getElementById('pokedex').className = '';
 }
 
 function doNotClose(event) {
