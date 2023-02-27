@@ -247,6 +247,21 @@ table td:nth-child(3) {
     background-color: rgb(220, 255, 22);
 }
 
+.other-pokemon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 120px;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+.other-pokemon span {
+    width: 48px;
+    display: flex;
+    justify-content: center;
+}
+
 @media(min-width: 768px) {
     #singleView {
         border-radius: 16px;

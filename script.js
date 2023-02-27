@@ -12,7 +12,7 @@ async function showPokemonDetails(id) {
     let url = `https://pokeapi.co/api/v2/pokemon/` + id.toString();
     let response = await fetch(url);
     currentPokemon = await response.json();
-    renderPokemonInfo();
+    renderPokemonInfo(id);
 }
 
 async function renderPokemon() {
@@ -44,13 +44,14 @@ function getTypes(pokemon) {
     return htmlTypes;
 }
 
-function renderPokemonInfo() {
+function renderPokemonInfo(id) {
     document.getElementById('pokemonName').innerHTML = currentPokemon['name'];
     document.getElementById('pokemonImg').src = currentPokemon['sprites']['other']['home']['front_default'];
     document.getElementById('pokemonId').innerHTML = '#' + String(currentPokemon['id']).padStart(3, '0');
     renderPokemonTypes();
     renderPokemonStats();
     getColor();
+    setNextIds(id);
     document.getElementById('windowSingleView').classList.remove('d-none');
     document.getElementById('body').classList.add('overflow-hidden');
 }
@@ -121,4 +122,16 @@ function closeSingleView() {
 
 function doNotClose(event) {
     event.stopPropagation();
+}
+
+function setNextIds(id) {
+    document.getElementById('previous').setAttribute('onclick', `nextPokemon(${id - 1})`);
+    document.getElementById('next').setAttribute('onclick', `nextPokemon(${id + 1})`);
+}
+
+function nextPokemon(id) {
+    if (id == 0) id = 151;
+    if (id == 152) id = 1;
+    document.getElementById('pokedex').className = '';
+    showPokemonDetails(id);
 }
