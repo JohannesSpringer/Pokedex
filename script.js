@@ -17,7 +17,7 @@ async function showPokemonDetails(id) {
 
 async function renderPokemon() {
     document.getElementById('overview').innerHTML = '';
-    for (let i = 1; i < 151; i++) {
+    for (let i = 1; i < 152; i++) {
         let url = 'https://pokeapi.co/api/v2/pokemon/' + i.toString();
         let response = await fetch(url);
         let newPokemon = await response.json();
