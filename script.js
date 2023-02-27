@@ -17,16 +17,12 @@ async function showPokemonDetails(id) {
 
 async function renderPokemon() {
     document.getElementById('overview').innerHTML = '';
-    for (let i = 1; i < 151; i++) {
+    for (let i = 1; i < 5; i++) {
         let url = 'https://pokeapi.co/api/v2/pokemon/' + i.toString();
-        let response = await loadPokemon(url);
+        let response = await fetch(url);
         let newPokemon = await response.json();
         document.getElementById('overview').innerHTML += await renderSinglePokemon(newPokemon);
     }
-}
-
-async function loadPokemon(url) {
-    return await fetch(url);
 }
 
 async function renderSinglePokemon(pokemon) {
@@ -55,7 +51,7 @@ function renderPokemonInfo() {
     renderPokemonTypes();
     renderPokemonStats();
     getColor();
-    document.getElementById('singleView').classList.remove('d-none');
+    document.getElementById('windowSingleView').classList.remove('d-none');
 }
 
 function renderPokemonTypes() {
@@ -105,7 +101,7 @@ async function getColor() {
     let response = await fetch(url);
     let color = await response.json();
     let bgColor = color['color']['name'];
-    document.getElementById('singleView').classList.add('bg-' + bgColor);
+    document.getElementById('pokedex').classList.add('bg-' + bgColor);
 }
 
 async function getBgColor(pokemon) {
@@ -114,4 +110,12 @@ async function getBgColor(pokemon) {
     let color = await response.json();
     let bgColor = color['color']['name'];
     return ('bg-' + bgColor);
+}
+
+function closeSingleView() {
+    document.getElementById('windowSingleView').classList.add('d-none');
+}
+
+function doNotClose(event) {
+    event.stopPropagation();
 }

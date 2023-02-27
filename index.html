@@ -10,18 +10,24 @@
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="fonts.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <script src="script.js"></script>
     <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </head>
 
 <body onload="renderPokemon()">
+    <div class="header">
+        <h2>Pokedex</h2>
+        <img class="bg-pokeball" src="img/bg-pokeball.png" alt="Pokeball logo">
+    </div>
     <div id="overview">
 
     </div>
 
-    <div class="bg-gray d-none">
-        <div id="singleView">
+    <div id="windowSingleView" class="bg-dark d-none" onclick="closeSingleView()">
+        <div id="singleView" onclick="doNotClose(event)">
             <div id="pokedex">
+                <span class="back-arrow" onclick="closeSingleView()">&#8592;</span>
                 <h1 id="pokemonName"></h1>
                 <div id="pokemonId"></div>
                 <div id="pokemonTypes"></div>
