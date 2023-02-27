@@ -222,7 +222,7 @@ table td:nth-child(3) {
 #windowSingleView {
     width: 100vw;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     top: 0;
 }
 
