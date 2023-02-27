@@ -26,7 +26,7 @@ async function renderPokemon() {
 }
 
 async function renderSinglePokemon(pokemon) {
-    return `<div class="pokemon-card ${await getBgColor(pokemon)}" onclick="showPokemonDetails(${pokemon['id']})">
+    return `<div class="pokemon-card ${await setBgColor(pokemon)}" onclick="showPokemonDetails(${pokemon['id']})">
                 <h3>${pokemon['name']}</h3>
                 <div class="pokemonId">#${String(pokemon['id']).padStart(3, '0')}</div>
                 <div class="pokemon-types-overview">${getTypes(pokemon)}</div>
@@ -50,7 +50,7 @@ function renderPokemonInfo(id) {
     document.getElementById('pokemonId').innerHTML = '#' + String(currentPokemon['id']).padStart(3, '0');
     renderPokemonTypes();
     renderPokemonStats();
-    getColor();
+    setColor();
     setNextIds(id);
     document.getElementById('windowSingleView').classList.remove('d-none');
     document.getElementById('body').classList.add('overflow-hidden');
@@ -98,20 +98,22 @@ function statSmallerThanMedium(stat, calculatedPartOfStat) {
     return stat['base_stat'] < (calculatedPartOfStat / 2);
 }
 
-async function getColor() {
+async function setColor() {
     let url = currentPokemon['species']['url'];
-    let response = await fetch(url);
-    let color = await response.json();
-    let bgColor = color['color']['name'];
+    let bgColor = await getColor(url);
     document.getElementById('pokedex').classList.add('bg-' + bgColor);
 }
 
-async function getBgColor(pokemon) {
+async function setBgColor(pokemon) {
     let url = pokemon['species']['url'];
+    let bgColor = await getColor(url);
+    return ('bg-' + bgColor);
+}
+
+async function getColor(url) {
     let response = await fetch(url);
     let color = await response.json();
-    let bgColor = color['color']['name'];
-    return ('bg-' + bgColor);
+    return color['color']['name'];
 }
 
 function closeSingleView() {
